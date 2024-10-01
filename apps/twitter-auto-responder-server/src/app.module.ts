@@ -3,6 +3,7 @@ import { TrendModule } from "./trend/trend.module";
 import { TwitterAccountModule } from "./twitterAccount/twitterAccount.module";
 import { AutoResponseModule } from "./autoResponse/autoResponse.module";
 import { UserModule } from "./user/user.module";
+import { SubscriptionModule } from "./subscription/subscription.module";
 import { HealthModule } from "./health/health.module";
 import { PrismaModule } from "./prisma/prisma.module";
 import { SecretsManagerModule } from "./providers/secrets/secretsManager.module";
@@ -24,6 +25,7 @@ import { AuthModule } from "./auth/auth.module";
     TwitterAccountModule,
     AutoResponseModule,
     UserModule,
+    SubscriptionModule,
     HealthModule,
     PrismaModule,
     SecretsManagerModule,

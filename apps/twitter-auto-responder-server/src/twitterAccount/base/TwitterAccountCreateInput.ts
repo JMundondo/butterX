@@ -16,6 +16,7 @@ import {
   MaxLength,
   IsOptional,
   ValidateNested,
+  IsBoolean,
 } from "class-validator";
 import { AutoResponseCreateNestedManyWithoutTwitterAccountsInput } from "./AutoResponseCreateNestedManyWithoutTwitterAccountsInput";
 import { Type } from "class-transformer";
@@ -69,6 +70,41 @@ class TwitterAccountCreateInput {
     nullable: true,
   })
   autoResponses?: AutoResponseCreateNestedManyWithoutTwitterAccountsInput;
+
+  @ApiProperty({
+    required: false,
+    type: Boolean,
+  })
+  @IsBoolean()
+  @IsOptional()
+  @Field(() => Boolean, {
+    nullable: true,
+  })
+  connected?: boolean | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @MaxLength(1000)
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  oauthToken?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @MaxLength(1000)
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  oauthTokenSecret?: string | null;
 }
 
 export { TwitterAccountCreateInput as TwitterAccountCreateInput };

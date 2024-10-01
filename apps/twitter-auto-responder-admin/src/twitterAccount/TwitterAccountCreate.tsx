@@ -7,6 +7,7 @@ import {
   TextInput,
   ReferenceArrayInput,
   SelectArrayInput,
+  BooleanInput,
 } from "react-admin";
 
 import { AutoResponseTitle } from "../autoResponse/AutoResponseTitle";
@@ -27,6 +28,9 @@ export const TwitterAccountCreate = (
             format={(value: any) => value && value.map((v: any) => v.id)}
           />
         </ReferenceArrayInput>
+        <BooleanInput label="connected" source="connected" />
+        <TextInput label="oauthToken" source="oauthToken" />
+        <TextInput label="oauthTokenSecret" source="oauthTokenSecret" />
       </SimpleForm>
     </Create>
   );

@@ -21,8 +21,11 @@ model TwitterAccount {
   accessTokenSecret String?
   accountName       String?
   autoResponses     AutoResponse[]
+  connected         Boolean?
   createdAt         DateTime       @default(now())
   id                String         @id @default(cuid())
+  oauthToken        String?
+  oauthTokenSecret  String?
   updatedAt         DateTime       @updatedAt
 }
 
@@ -40,13 +43,32 @@ model AutoResponse {
 }
 
 model User {
-  createdAt DateTime @default(now())
-  email     String?  @unique
-  firstName String?
-  id        String   @id @default(cuid())
-  lastName  String?
-  password  String
-  roles     Json
-  updatedAt DateTime @updatedAt
-  username  String   @unique
+  createdAt     DateTime       @default(now())
+  email         String?        @unique
+  firstName     String?
+  id            String         @id @default(cuid())
+  isSubscribed  Boolean?
+  isSuperAdmin  Boolean?
+  lastName      String?
+  password      String
+  roles         Json
+  subscriptions Subscription[]
+  updatedAt     DateTime       @updatedAt
+  username      String         @unique
+}
+
+model Subscription {
+  createdAt      DateTime                @default(now())
+  endDate        DateTime?
+  id             String                  @id @default(cuid())
+  startDate      DateTime?
+  status         EnumSubscriptionStatus?
+  subscriptionId String?
+  updatedAt      DateTime                @updatedAt
+  user           User?                   @relation(fields: [userId], references: [id])
+  userId         String?
+}
+
+enum EnumSubscriptionStatus {
+  Option1
 }

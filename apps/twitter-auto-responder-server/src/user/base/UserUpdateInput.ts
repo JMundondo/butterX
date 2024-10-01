@@ -11,10 +11,18 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsOptional, MaxLength } from "class-validator";
+import {
+  IsString,
+  IsOptional,
+  MaxLength,
+  IsBoolean,
+  ValidateNested,
+} from "class-validator";
 import { IsJSONValue } from "../../validators";
 import { GraphQLJSON } from "graphql-type-json";
 import { InputJsonValue } from "../../types";
+import { SubscriptionUpdateManyWithoutUsersInput } from "./SubscriptionUpdateManyWithoutUsersInput";
+import { Type } from "class-transformer";
 
 @InputType()
 class UserUpdateInput {
@@ -40,6 +48,28 @@ class UserUpdateInput {
     nullable: true,
   })
   firstName?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: Boolean,
+  })
+  @IsBoolean()
+  @IsOptional()
+  @Field(() => Boolean, {
+    nullable: true,
+  })
+  isSubscribed?: boolean | null;
+
+  @ApiProperty({
+    required: false,
+    type: Boolean,
+  })
+  @IsBoolean()
+  @IsOptional()
+  @Field(() => Boolean, {
+    nullable: true,
+  })
+  isSuperAdmin?: boolean | null;
 
   @ApiProperty({
     required: false,
@@ -73,6 +103,18 @@ class UserUpdateInput {
     nullable: true,
   })
   roles?: InputJsonValue;
+
+  @ApiProperty({
+    required: false,
+    type: () => SubscriptionUpdateManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => SubscriptionUpdateManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => SubscriptionUpdateManyWithoutUsersInput, {
+    nullable: true,
+  })
+  subscriptions?: SubscriptionUpdateManyWithoutUsersInput;
 
   @ApiProperty({
     required: false,

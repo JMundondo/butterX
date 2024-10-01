@@ -5,6 +5,8 @@ export type UserOrderByInput = {
   email?: SortOrder;
   firstName?: SortOrder;
   id?: SortOrder;
+  isSubscribed?: SortOrder;
+  isSuperAdmin?: SortOrder;
   lastName?: SortOrder;
   password?: SortOrder;
   roles?: SortOrder;
