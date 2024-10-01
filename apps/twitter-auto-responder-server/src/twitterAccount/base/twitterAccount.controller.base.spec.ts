@@ -21,16 +21,22 @@ const CREATE_INPUT = {
   accessToken: "exampleAccessToken",
   accessTokenSecret: "exampleAccessTokenSecret",
   accountName: "exampleAccountName",
+  connected: "true",
   createdAt: new Date(),
   id: "exampleId",
+  oauthToken: "exampleOauthToken",
+  oauthTokenSecret: "exampleOauthTokenSecret",
   updatedAt: new Date(),
 };
 const CREATE_RESULT = {
   accessToken: "exampleAccessToken",
   accessTokenSecret: "exampleAccessTokenSecret",
   accountName: "exampleAccountName",
+  connected: "true",
   createdAt: new Date(),
   id: "exampleId",
+  oauthToken: "exampleOauthToken",
+  oauthTokenSecret: "exampleOauthTokenSecret",
   updatedAt: new Date(),
 };
 const FIND_MANY_RESULT = [
@@ -38,8 +44,11 @@ const FIND_MANY_RESULT = [
     accessToken: "exampleAccessToken",
     accessTokenSecret: "exampleAccessTokenSecret",
     accountName: "exampleAccountName",
+    connected: "true",
     createdAt: new Date(),
     id: "exampleId",
+    oauthToken: "exampleOauthToken",
+    oauthTokenSecret: "exampleOauthTokenSecret",
     updatedAt: new Date(),
   },
 ];
@@ -47,8 +56,11 @@ const FIND_ONE_RESULT = {
   accessToken: "exampleAccessToken",
   accessTokenSecret: "exampleAccessTokenSecret",
   accountName: "exampleAccountName",
+  connected: "true",
   createdAt: new Date(),
   id: "exampleId",
+  oauthToken: "exampleOauthToken",
+  oauthTokenSecret: "exampleOauthTokenSecret",
   updatedAt: new Date(),
 };
 

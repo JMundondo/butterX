@@ -16,6 +16,7 @@ import {
   MaxLength,
   IsOptional,
   ValidateNested,
+  IsBoolean,
   IsDate,
 } from "class-validator";
 import { AutoResponse } from "../../autoResponse/base/AutoResponse";
@@ -69,6 +70,17 @@ class TwitterAccount {
   autoResponses?: Array<AutoResponse>;
 
   @ApiProperty({
+    required: false,
+    type: Boolean,
+  })
+  @IsBoolean()
+  @IsOptional()
+  @Field(() => Boolean, {
+    nullable: true,
+  })
+  connected!: boolean | null;
+
+  @ApiProperty({
     required: true,
   })
   @IsDate()
@@ -83,6 +95,30 @@ class TwitterAccount {
   @IsString()
   @Field(() => String)
   id!: string;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @MaxLength(1000)
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  oauthToken!: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @MaxLength(1000)
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  oauthTokenSecret!: string | null;
 
   @ApiProperty({
     required: true,

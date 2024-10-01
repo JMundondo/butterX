@@ -5,4 +5,7 @@ export type TwitterAccountUpdateInput = {
   accessTokenSecret?: string | null;
   accountName?: string | null;
   autoResponses?: AutoResponseUpdateManyWithoutTwitterAccountsInput;
+  connected?: boolean | null;
+  oauthToken?: string | null;
+  oauthTokenSecret?: string | null;
 };
