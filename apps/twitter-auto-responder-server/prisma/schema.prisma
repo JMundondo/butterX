@@ -1,0 +1,52 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Trend {
+  autoResponses AutoResponse[]
+  createdAt     DateTime       @default(now())
+  id            String         @id @default(cuid())
+  topic         String?
+  updatedAt     DateTime       @updatedAt
+  volume        Int?
+}
+
+model TwitterAccount {
+  accessToken       String?
+  accessTokenSecret String?
+  accountName       String?
+  autoResponses     AutoResponse[]
+  createdAt         DateTime       @default(now())
+  id                String         @id @default(cuid())
+  updatedAt         DateTime       @updatedAt
+}
+
+model AutoResponse {
+  aiResponse       String?
+  content          String?
+  createdAt        DateTime        @default(now())
+  id               String          @id @default(cuid())
+  mediaUrl         String?
+  trend            Trend?          @relation(fields: [trendId], references: [id])
+  trendId          String?
+  twitterAccount   TwitterAccount? @relation(fields: [twitterAccountId], references: [id])
+  twitterAccountId String?
+  updatedAt        DateTime        @updatedAt
+}
+
+model User {
+  createdAt DateTime @default(now())
+  email     String?  @unique
+  firstName String?
+  id        String   @id @default(cuid())
+  lastName  String?
+  password  String
+  roles     Json
+  updatedAt DateTime @updatedAt
+  username  String   @unique
+}
